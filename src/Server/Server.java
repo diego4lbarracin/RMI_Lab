@@ -6,7 +6,7 @@ public class Server {
     public static void main(String[] args) {
         try{
             //1024 66636
-            Registry r = java.rmi.registry.LocateRegistry.createRegistry(1099);
+            Registry r = java.rmi.registry.LocateRegistry.createRegistry(9999);
             r.rebind("ServerInterface", new ServerImpl());
             System.out.println("Server created successfully.");
         }catch (Exception e){
