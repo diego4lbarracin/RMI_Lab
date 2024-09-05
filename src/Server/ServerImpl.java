@@ -12,7 +12,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface{
     List<Student> studentList = new ArrayList<>();
 
     public ServerImpl() throws RemoteException {
-        this.studentList = loadStudentsFromFile("home/ubuntu/repoLabRMI/RMI_Lab/src/Server/DatosEstudiantes.txt");
+        this.studentList = loadStudentsFromFile("/home/ubuntu/repoLabRMI/RMI_Lab/src/Server/DatosEstudiantes.txt");
     }
 
     @Override
