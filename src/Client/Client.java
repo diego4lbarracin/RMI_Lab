@@ -8,17 +8,30 @@ import java.rmi.registry.Registry;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
+/*
+*   Remote Method Invocation
+*   Integrantes:
+*   -Paula Malagon.
+*   -Simon Marquez.
+*   -Diego Albarracin.
+* */
 public class Client {
     public static void main(String[] args) {
+        // Create a Scanner object to read input from the user
         Scanner sc = new Scanner(System.in);
         int option = 0;
         int value= 0;
         String valueString = "";
+
         try {
-            Registry myRegistry = LocateRegistry.getRegistry("98.81.215.75", 9999);
+            // Connect to the RMI registry on the specified IP address and port
+            Registry myRegistry = LocateRegistry.getRegistry("0.0.0.0", 9999);
+            // Look up the remote object in the RMI registry
             ServerInterface serverIn = (ServerInterface) myRegistry.lookup("ServerInterface");
 
+            // Main loop of the client application
             do {
+                // Print the menu options
                 System.out.println("Welcome to the Interface");
                 System.out.println("Choose a correct option : ");
                 System.out.println("(1) Get a student's name by its id.");
@@ -29,9 +42,14 @@ public class Client {
                 System.out.println("(6) Get the mean and standard deviation in grades related to an activity.");
                 System.out.println("(7) Exit.");
                 System.out.print("=> ");
+
+                // Read the user's choice
                 option = sc.nextInt();
+
+                // Perform the chosen action
                 switch (option){
                     case 1 -> {
+                        // Option 1: Get a student's name by its id
                         System.out.println("*******************************************************************");
                         System.out.print("Type the student's id => ");
                         value = sc.nextInt();
@@ -39,6 +57,7 @@ public class Client {
                         System.out.println("*******************************************************************");
                     }
                     case 2 -> {
+                        // Option 2: Create a new student
                         System.out.println("*******************************************************************");
                         String groupID;
                         int idStudent;
@@ -60,6 +79,7 @@ public class Client {
                         System.out.println("*******************************************************************");
                     }
                     case 3 -> {
+                        // Option 3: Get a student's grade average by its id
                         System.out.println("*******************************************************************");
                         System.out.print("Type the student's id => ");
                         value = sc.nextInt();
@@ -67,6 +87,7 @@ public class Client {
                         System.out.println("*******************************************************************");
                     }
                     case 4 -> {
+                        // Option 4: Get a student's group by its id
                         System.out.println("*******************************************************************");
                         System.out.print("Type the student's id => ");
                         value = sc.nextInt();
@@ -74,6 +95,7 @@ public class Client {
                         System.out.println("*******************************************************************");
                     }
                     case 5 -> {
+                        // Option 5: Get group members by its id
                         System.out.println("*******************************************************************");
                         System.out.print("Type the group's id => ");
                         valueString = sc.next();
@@ -82,6 +104,7 @@ public class Client {
                         System.out.println("*******************************************************************");
                     }
                     case 6 -> {
+                        // Option 6: Get the mean and standard deviation in grades related to an activity
                         System.out.println("*******************************************************************");
                         System.out.print("Type the activity id (Taller1=1 or Taller2=2) => " );
                         value = sc.nextInt();
@@ -89,18 +112,21 @@ public class Client {
                         System.out.println("*******************************************************************");
                     }
                     case 7 -> {
+                        // Option 7: Exit the application
                         System.out.println("*******************************************************************");
                         System.out.println("You have exited!");
                         System.out.println("*******************************************************************");
                     }
                     default -> {
+                        // Invalid option
                         System.out.println("*******************************************************************");
                         System.out.println("Enter a valid option.");
                         System.out.println("*******************************************************************");
                     }
                 }
-            }while (option!=7);
+            }while (option!=7); // Continue until the user chooses to exit
         } catch (Exception e){
+            // Print any exceptions that occur
             System.out.println("Error "+ e);
         }
     }
