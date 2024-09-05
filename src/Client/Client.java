@@ -15,8 +15,8 @@ public class Client {
         int value= 0;
         String valueString = "";
         try {
-            Registry myRegistry = LocateRegistry.getRegistry("localhost", 1099);
-            ServerInterface serverIn = (ServerInterface)Naming.lookup("//localhost/ServerInterface");
+            Registry myRegistry = LocateRegistry.getRegistry("98.81.215.75", 9999);
+            ServerInterface serverIn = (ServerInterface) myRegistry.lookup("ServerInterface");
 
             do {
                 System.out.println("Welcome to the Interface");
